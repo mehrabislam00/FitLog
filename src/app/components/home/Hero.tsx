@@ -1,9 +1,17 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import heroImage from "@/app/assets/banner.png"; // swap with your fitness image
 
 const Hero = () => {
+  const scrollToLibraries = () => {
+    const section = document.getElementById("libraries");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <section
       className="px-4 py-4 sm:px-6 sm:py-5"
@@ -43,14 +51,15 @@ const Hero = () => {
               lock it into today's plan, and watch the week's work add up.
             </p>
 
-            {/* CTA Button — sharp rectangle, lime */}
-            <Link
-              href="/workouts"
+            {/* CTA Button — smooth scroll to library */}
+            <button
+              type="button"
+              onClick={scrollToLibraries}
               className="inline-block px-6 py-3 text-[11px] font-black uppercase tracking-[0.18em] transition-all duration-200 hover:brightness-110 active:scale-95"
               style={{ backgroundColor: "#CCFF00", color: "#0C0D10" }}
             >
               Browse Workouts
-            </Link>
+            </button>
           </div>
 
           {/* ── Right Image ── */}
