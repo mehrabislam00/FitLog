@@ -2,9 +2,9 @@
 
 > A modern fitness and workout tracking web application designed to help you discover exercises, organize your workouts, and stay consistent with your fitness journey.
 
-## 🌐 Live Demo
+## 🌐 Live Demo : [fit-log-murex-one.vercel.app](https://fit-log-murex-one.vercel.app/)
 
-**[Visit FitLog Live →](fit-log-murex-one.vercel.app)**
+
 
 
 ## 📖 About
