@@ -24,6 +24,7 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
           src={workout.image}
           alt={workout.name}
           fill
+          sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1023px) calc((100vw - 64px) / 2), (max-width: 1279px) calc((100vw - 64px) / 3), 400px"
           priority
           className="object-cover transition-all duration-500 ease-in-out
                      group-hover:scale-[1.08] group-hover:blur-md"

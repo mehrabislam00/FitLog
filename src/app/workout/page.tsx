@@ -8,7 +8,7 @@ import { Exercise } from "@/type/workoutType";
 
 // Fetch data for the workout library.
 const getWorkout = async (): Promise<Exercise[]> => {
-  const res = await fetch("https://api.api-store.workers.dev/api/fitlog");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_ANALYTICS_ID}/api/fitlog`);
 
   if (!res.ok) {
     throw new Error("Failed to fetch Exercise");

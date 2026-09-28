@@ -4,6 +4,7 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { LuClock, LuFlame, LuStar, LuCheck, LuX, LuChevronDown, LuDumbbell } from "react-icons/lu";
+import { toast } from "react-toastify";
 import { WorkoutContext, type PlannedWorkout } from "@/context/workoutContext";
 
 type Tab     = "today" | "saved";
@@ -93,8 +94,8 @@ function Controls({ tab, setTab, sortBy, setSortBy }: {
 // One workout entry with its available actions.
 function WorkoutRow({ w, tab, onToggle, onRemove }: {
   w: PlannedWorkout; tab: Tab;
-  onToggle: (id: string) => void;
-  onRemove: (id: string) => void;
+  onToggle: (workout: PlannedWorkout) => void;
+  onRemove: (workout: PlannedWorkout) => void;
 }) {
   return (
     <article
@@ -104,7 +105,7 @@ function WorkoutRow({ w, tab, onToggle, onRemove }: {
                   ${w.done ? "opacity-50" : ""}`}
     >
       <div className="relative h-[72px] w-28 shrink-0 overflow-hidden rounded-xl">
-        <Image src={w.image} alt={w.name} fill className="object-cover" />
+        <Image src={w.image} alt={w.name} fill sizes="112px" className="object-cover" />
       </div>
 
       <div className="min-w-0 flex-1">
@@ -131,7 +132,7 @@ function WorkoutRow({ w, tab, onToggle, onRemove }: {
 
         {tab === "today" && (
           <button
-            onClick={() => onToggle(String(w.id))}
+            onClick={() => onToggle(w)}
             style={{ backgroundColor: "#CCFF00", color: "#0C0D10" }}
             className="flex items-center gap-1.5 rounded-full px-4 py-2
                        text-[11px] font-black transition-all
@@ -143,7 +144,7 @@ function WorkoutRow({ w, tab, onToggle, onRemove }: {
         )}
 
         <button
-          onClick={() => onRemove(String(w.id))}
+          onClick={() => onRemove(w)}
           aria-label={`Remove ${w.name}`}
           className="rounded-full p-1.5 text-[#9CA3AF] transition-colors
                      hover:bg-white/5 hover:text-white"
@@ -225,13 +226,40 @@ export default function MyPlanClient() {
     calories:  PlanWorkout.reduce((s, w) => s + w.caloriesBurned, 0),
   }), [PlanWorkout]);
 
-  const toggleDone = (id: string) =>
-    setPlanWorkout(items => items.map(w => String(w.id) === id ? { ...w, done: !w.done } : w));
+  const toggleDone = (workout: PlannedWorkout) => {
+    const isDone = !workout.done;
+    setPlanWorkout(items => items.map(item =>
+      String(item.id) === String(workout.id) ? { ...item, done: isDone } : item
+    ));
 
-  const remove = (id: string) =>
-    tab === "today"
-      ? setPlanWorkout(items => items.filter(w => String(w.id) !== id))
-      : setSaveWorkout(items => items.filter(w => String(w.id) !== id));
+    const message = isDone
+      ? `${workout.name} marked as done`
+      : `${workout.name} marked as not done`;
+    toast[isDone ? "success" : "info"](message, {
+      position: "top-right",
+      autoClose: 3000,
+      theme: "dark",
+    });
+  };
+
+  const remove = (workout: PlannedWorkout) => {
+    const workoutId = String(workout.id);
+    if (tab === "today") {
+      setPlanWorkout(items => items.filter(item => String(item.id) !== workoutId));
+      toast.error(`${workout.name} removed from today's plan`, {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "colored",
+      });
+    } else {
+      setSaveWorkout(items => items.filter(item => String(item.id) !== workoutId));
+      toast.error(`${workout.name} removed from saved workouts`, {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "colored",
+      });
+    }
+  };
 
   // Main plan page body.
   return (

@@ -59,14 +59,16 @@ const Hero = () => {
 
           {/* Featured workout image */}
           <div className="relative flex w-full flex-shrink-0 items-end justify-center sm:w-auto sm:self-end">
-            <Image
-              src={heroImage}
-              alt="FitLog workout"
-              width={420}
-              height={360}
-              priority
-              className="h-auto w-[300px] object-contain  drop-shadow-2xl sm:w-[340px] lg:w-[420px]"
-            />
+            <div className="relative aspect-[7/6] w-[300px] sm:w-[340px] lg:w-[420px]">
+              <Image
+                src={heroImage}
+                alt="FitLog workout"
+                fill
+                sizes="(max-width: 639px) 300px, (max-width: 1023px) 340px, 420px"
+                priority
+                className="object-contain drop-shadow-2xl"
+              />
+            </div>
           </div>
 
         </div>
