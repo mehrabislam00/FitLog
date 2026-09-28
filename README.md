@@ -1,36 +1,165 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FitLog 🏋️
 
-## Getting Started
+> A modern fitness and workout tracking web application designed to help you discover exercises, organize your workouts, and stay consistent with your fitness journey.
 
-First, run the development server:
+## 🌐 Live Demo
+
+**[Visit FitLog Live →](fit-log-murex-one.vercel.app)**
+
+
+## 📖 About
+
+**FitLog** is a modern fitness-focused web application built to make workout discovery and fitness tracking simple, organized, and enjoyable.
+
+The application provides a clean interface for browsing workouts and exercises while keeping the overall experience focused on usability and visual clarity.
+
+This project was built as a portfolio project to explore modern web development with **Next.js, React, TypeScript, and Tailwind CSS**.
+
+## ✨ Features
+
+* 🏋️ **Workout Library** — Browse and explore available workouts and exercises.
+* 🔎 **Workout Discovery** — Easily find exercises based on your needs.
+* 📚 **Exercise Details** — View useful information about individual exercises.
+* 📊 **Workout Tracking** — Keep track of your workout activities.
+* 📱 **Responsive Design** — Designed to work across desktop, tablet, and mobile devices.
+* 🎨 **Modern UI** — Clean, minimal, and fitness-focused interface.
+* ⚡ **Fast Performance** — Built with Next.js for a modern web experience.
+* 🔔 **User Feedback** — Toast notifications for important actions and interactions.
+
+## 🛠️ Tech Stack
+
+| Technology         | Purpose               |
+| ------------------ | --------------------- |
+| **Next.js**        | React framework       |
+| **React**          | UI development        |
+| **TypeScript**     | Type-safe development |
+| **Tailwind CSS**   | Styling               |
+| **DaisyUI**        | UI components         |
+| **React Icons**    | Icons                 |
+| **React Toastify** | Notifications         |
+| **ESLint**         | Code quality          |
+
+## 🏗️ Project Structure
+
+```text
+FitLog/
+├── src/
+│   ├── app/
+│   ├── components/
+│   └── ...
+├── public/
+├── package.json
+├── package-lock.json
+├── next.config.ts
+├── tsconfig.json
+├── eslint.config.mjs
+├── postcss.config.mjs
+└── README.md
+```
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/mehrabislam00/FitLog.git
+```
+
+### 2. Navigate to the project
+
+```bash
+cd FitLog
+```
+
+### 3. Install dependencies
+
+```bash
+npm install
+```
+
+### 4. Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open **http://localhost:3000** in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📜 Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev
+```
 
-## Learn More
+Starts the development server.
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Creates a production build.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run start
+```
 
-## Deploy on Vercel
+Starts the production server.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run lint
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Runs ESLint to check the project for code-quality issues.
+
+## 🎯 Project Goals
+
+FitLog was created with a few core goals:
+
+* Make workout discovery easier.
+* Create a clean and enjoyable fitness experience.
+* Practice building modern React applications.
+* Work with reusable UI components.
+* Improve responsive web design skills.
+* Build a polished project suitable for a developer portfolio.
+
+## 🔮 Future Improvements
+
+Potential future improvements include:
+
+* User authentication
+* Personalized workout plans
+* Workout history
+* Progress tracking and analytics
+* Favorite exercises
+* Custom workout creation
+* Workout reminders
+* Personal dashboard
+* Backend/database integration
+* Mobile application
+
+## 📸 Preview
+
+*Add screenshots of the application here.*
+
+```text
+Coming soon...
+```
+
+## 👨‍💻 Author
+
+**Mehrab Islam**
+
+CSE Student & Web Developer
+
+* GitHub: [@mehrabislam00](https://github.com/mehrabislam00)
+* Repository: [FitLog](https://github.com/mehrabislam00/FitLog)
+
+## 📄 License
+
+This project is currently intended for educational and portfolio purposes.
+
+---
+
+<p align="center">
+  Built with ❤️ by <strong>Mehrab Islam</strong>
+</p>
