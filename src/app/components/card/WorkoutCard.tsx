@@ -27,17 +27,17 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
           sizes="(max-width: 639px) calc(100vw - 40px), (max-width: 1023px) calc((100vw - 64px) / 2), (max-width: 1279px) calc((100vw - 64px) / 3), 400px"
           priority
           className="object-cover transition-all duration-500 ease-in-out
-                     group-hover:scale-[1.08] group-hover:blur-md"
+                     sm:group-hover:scale-[1.08] sm:group-hover:blur-md"
         />
 
         {/* Hover content */}
         <div
           className="absolute inset-0 flex flex-col items-center justify-center gap-3
-                     opacity-0 transition-opacity duration-300 delay-75
-                     group-hover:opacity-100"
+                     opacity-100 transition-opacity duration-300 delay-75
+                     sm:opacity-0 sm:group-hover:opacity-100"
         >
           {/* CTA button — LuChevronRight replaces broken LuArrowRight */}
-          <div className="translate-y-4 transition-transform duration-300 ease-out group-hover:translate-y-0">
+          <div className="translate-y-0 transition-transform duration-300 ease-out sm:translate-y-4 sm:group-hover:translate-y-0">
             <Link
               href={`/workout/${workout.id}`}
               className="flex items-center gap-2 rounded-full px-5 py-2.5
@@ -53,8 +53,8 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
 
           {/* Stats chip */}
           <div
-            className="translate-y-4 transition-transform duration-300 ease-out delay-75
-                       group-hover:translate-y-0
+            className="translate-y-0 transition-transform duration-300 ease-out delay-75
+                       sm:translate-y-4 sm:group-hover:translate-y-0
                        flex items-center gap-2 rounded-full px-4 py-1.5
                        text-[10px] font-semibold border backdrop-blur-sm"
             style={{
@@ -110,7 +110,7 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
           style={{ backgroundColor: "#ffffff0d" }}
         />
 
-        <div className="flex items-center gap-5">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 sm:gap-5">
           {[
             { icon: <LuClock size={13} />, label: `${workout.duration} min`        },
             { icon: <LuFlame size={13} />, label: `${workout.caloriesBurned} kcal` },

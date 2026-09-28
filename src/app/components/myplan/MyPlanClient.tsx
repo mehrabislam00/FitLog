@@ -32,14 +32,14 @@ function StatsSection({ exercises, minutes, calories }: {
   ];
 
   return (
-    <div className="mb-8 grid grid-cols-3 overflow-hidden rounded-2xl border border-white/[0.06] bg-[#111214]">
+    <div className="mb-8 grid grid-cols-1 overflow-hidden rounded-2xl border border-white/6 bg-[#111214] min-[360px]:grid-cols-3">
       {stats.map(({ label, value, accent }, i) => (
         <div
           key={label}
-          className={`px-8 py-6 ${i !== 0 ? "border-l border-white/[0.06]" : ""}`}
+          className={`px-4 py-4 min-[360px]:px-3 sm:px-8 sm:py-6 ${i !== 0 ? "border-t border-white/6 min-[360px]:border-l min-[360px]:border-t-0" : ""}`}
         >
           <p className="text-xs text-[#9CA3AF]">{label}</p>
-          <p className={`mt-1 text-5xl font-black leading-none ${accent ? "text-[#CCFF00]" : "text-white"}`}>
+          <p className={`mt-1 text-3xl font-black leading-none sm:text-5xl ${accent ? "text-[#CCFF00]" : "text-white"}`}>
             {value}
           </p>
         </div>
@@ -54,13 +54,13 @@ function Controls({ tab, setTab, sortBy, setSortBy }: {
   sortBy: SortKey; setSortBy: (s: SortKey) => void;
 }) {
   return (
-    <div className="mb-5 flex items-center justify-between">
-      <div className="inline-flex gap-1 rounded-xl border border-white/[0.06] bg-[#111214] p-1">
+    <div className="mb-5 flex flex-col items-stretch gap-3 min-[420px]:flex-row min-[420px]:items-center min-[420px]:justify-between">
+      <div className="inline-flex gap-1 rounded-xl border border-white/6 bg-[#111214] p-1">
         {TABS.map(({ key, label }) => (
           <button
             key={key}
             onClick={() => setTab(key)}
-            className={`rounded-lg px-5 py-2 text-xs font-semibold transition-colors duration-200
+            className={`rounded-lg px-3 py-2 text-xs font-semibold transition-colors duration-200 sm:px-5
               ${tab === key
                 ? "bg-[#1E2028] text-white"
                 : "text-[#9CA3AF] hover:text-white"}`}
@@ -99,12 +99,12 @@ function WorkoutRow({ w, tab, onToggle, onRemove }: {
 }) {
   return (
     <article
-      className={`group flex items-center gap-4 rounded-2xl border border-white/[0.06]
+      className={`group flex flex-wrap items-center gap-3 rounded-2xl border border-white/6
                   bg-[#111214] p-3 transition-all duration-200
                   hover:border-[#CCFF00]/20 hover:bg-[#131518]
-                  ${w.done ? "opacity-50" : ""}`}
+          sm:flex-nowrap sm:gap-4 ${w.done ? "opacity-50" : ""}`}
     >
-      <div className="relative h-[72px] w-28 shrink-0 overflow-hidden rounded-xl">
+      <div className="relative h-18 w-28 shrink-0 overflow-hidden rounded-xl">
         <Image src={w.image} alt={w.name} fill sizes="112px" className="object-cover" />
       </div>
 
@@ -114,18 +114,18 @@ function WorkoutRow({ w, tab, onToggle, onRemove }: {
           {w.name}
         </h3>
         <p className="mt-0.5 text-[11px] text-[#9CA3AF]">{w.equipment}</p>
-        <div className="mt-2 flex items-center gap-4 text-[11px] text-[#9CA3AF]">
+        <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-[#9CA3AF]">
           <Stat icon={<LuClock size={12} />}  label={`${w.duration} min`}        />
           <Stat icon={<LuFlame size={12} />}  label={`${w.caloriesBurned} kcal`} />
           <Stat icon={<LuStar  size={12} />}  label={`${w.rating}`}              />
         </div>
       </div>
 
-      <div className="flex shrink-0 items-center gap-2 pr-1">
+      <div className="flex w-full shrink-0 flex-wrap items-center gap-2 pr-1 sm:w-auto sm:flex-nowrap">
         <Link
           href={`/workout/${w.id}`}
-          className="rounded-full border border-white/15 px-4 py-2 text-[11px] font-medium
-                     text-white transition-colors hover:border-[#CCFF00]/40 hover:text-[#CCFF00]"
+          className="flex-1 whitespace-nowrap rounded-full border border-white/15 px-3 py-2 text-center text-[11px] font-medium
+                     text-white transition-colors hover:border-[#CCFF00]/40 hover:text-[#CCFF00] sm:flex-none sm:px-4"
         >
           View Details
         </Link>
@@ -134,8 +134,8 @@ function WorkoutRow({ w, tab, onToggle, onRemove }: {
           <button
             onClick={() => onToggle(w)}
             style={{ backgroundColor: "#CCFF00", color: "#0C0D10" }}
-            className="flex items-center gap-1.5 rounded-full px-4 py-2
-                       text-[11px] font-black transition-all
+            className="flex flex-1 items-center justify-center gap-1.5 rounded-full px-3 py-2
+                       text-center text-[10px] font-black transition-all sm:flex-none sm:whitespace-nowrap sm:px-4 sm:text-[11px]
                        hover:shadow-[0_0_20px_rgba(204,255,0,0.35)] active:scale-95"
           >
             <LuCheck size={13} strokeWidth={3} />
@@ -263,12 +263,12 @@ export default function MyPlanClient() {
 
   // Main plan page body.
   return (
-    <main className="min-h-screen bg-[#0C0D10] px-6 py-10 sm:px-10">
+    <main className="min-h-screen bg-[#0C0D10] px-3 py-8 sm:px-10 sm:py-10">
       <div className="container mx-auto ">
 
         {/* Page heading */}
         <header className="mb-8">
-          <h1 className="text-4xl font-black uppercase tracking-tight text-white">
+          <h1 className="text-3xl font-black uppercase tracking-tight text-white sm:text-4xl">
             My Plan
           </h1>
           <p className="mt-1 text-sm text-[#9CA3AF]">

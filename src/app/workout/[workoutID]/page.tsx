@@ -77,15 +77,14 @@ const WorkOutDetails = async ({ params }: WorkOutIdProps) => {
   // Main workout detail page body.
   return (
     <main
-      className="min-h-screen px-5 py-12 sm:px-8"
+      className="min-h-screen px-3 py-8 sm:px-8 sm:py-12"
       style={{ backgroundColor: "#0C0D10" }}
     >
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.1fr]">
 
           {/* Workout image */}
-          <div className="relative w-full overflow-hidden rounded-2xl"
-               style={{ minHeight: "480px" }}>
+          <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl sm:aspect-auto sm:min-h-95 lg:min-h-120">
             <Image
               src={workout.image}
               alt={workout.name}
@@ -99,7 +98,7 @@ const WorkOutDetails = async ({ params }: WorkOutIdProps) => {
           {/* Workout description and training details */}
           <div className="flex flex-col">
 
-            <h1 className="text-4xl font-black uppercase leading-tight tracking-tight text-white sm:text-[2.6rem]">
+            <h1 className="text-3xl font-black uppercase leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.6rem]">
               {workout.name}
             </h1>
 
@@ -127,7 +126,7 @@ const WorkOutDetails = async ({ params }: WorkOutIdProps) => {
               {infoRows(workout).map(({ icon, label, value }, i) => (
                 <div
                   key={label}
-                  className={`flex items-center justify-between px-5 py-3.5 ${
+                  className={`flex items-start justify-between gap-3 px-3 py-3.5 sm:px-5 ${
                     i > 0 ? "border-t border-white/6" : ""
                   }`}
                 >
@@ -140,7 +139,7 @@ const WorkOutDetails = async ({ params }: WorkOutIdProps) => {
                       {label}
                     </span>
                   </div>
-                  <span className="text-sm font-semibold text-white">{value}</span>
+                  <span className="min-w-0 wrap-break-word text-right text-sm font-semibold text-white">{value}</span>
                 </div>
               ))}
             </div>
@@ -169,7 +168,7 @@ const WorkOutDetails = async ({ params }: WorkOutIdProps) => {
             </div>
 
             {/* Plan and save actions */}
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
              <TodayPlan workout = {workout} />
 
           <Save workout={workout} />

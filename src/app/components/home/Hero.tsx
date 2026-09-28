@@ -14,14 +14,14 @@ const Hero = () => {
 
   return (
     <section
-      className="px-4 py-4 sm:px-6 sm:py-5"
+      className="px-3 py-3 sm:px-6 sm:py-5"
       style={{ backgroundColor: "#0C0D10" }}
     >
       <div
-        className="relative container mx-auto  overflow-hidden rounded-2xl"
+        className="relative container mx-auto overflow-hidden rounded-2xl"
         style={{ backgroundColor: "#111214" }}
       >
-        <div className="flex min-h-[300px] flex-col items-center gap-8 px-10 py-14 sm:flex-row sm:justify-between sm:gap-0 lg:min-h-[340px] lg:px-16">
+        <div className="flex min-h-[300px] flex-col items-center gap-6 px-5 py-9 sm:flex-row sm:justify-between sm:gap-4 sm:px-8 sm:py-12 lg:min-h-[340px] lg:px-16">
 
           {/* Hero copy and workout link */}
           <div className="z-10 w-full max-w-lg flex-1">
@@ -59,7 +59,7 @@ const Hero = () => {
 
           {/* Featured workout image */}
           <div className="relative flex w-full flex-shrink-0 items-end justify-center sm:w-auto sm:self-end">
-            <div className="relative aspect-[7/6] w-[300px] sm:w-[340px] lg:w-[420px]">
+            <div className="relative aspect-[7/6] w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[420px]">
               <Image
                 src={heroImage}
                 alt="FitLog workout"

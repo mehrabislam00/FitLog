@@ -31,7 +31,7 @@ const WorkOut = async () => {
   return (
     <main
       id="libraries"
-      className="min-h-screen px-5 py-10 sm:px-8 scroll-mt-28"
+      className="min-h-screen scroll-mt-28 px-3 py-8 sm:px-8 sm:py-10"
       style={{ backgroundColor: "#0C0D10" }}
     >
       <div className="container mx-auto ">

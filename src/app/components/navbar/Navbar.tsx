@@ -24,7 +24,7 @@ const Navbar = () => {
       className="sticky top-0 z-50 border-b border-white/5"
       style={{ backgroundColor: "#0C0D10" }}
     >
-      <div className="  flex h-15  items-center justify-between px-5 container mx-auto">
+      <div className="container mx-auto flex h-15 items-center justify-between px-3 sm:px-5">
 
         {/* Brand link */}
         <Link href="/" className="flex items-center gap-2.5" onClick={() => setMenuOpen(false)} scroll={false}>
@@ -70,12 +70,12 @@ const Navbar = () => {
         </div>
 
         {/* Plan links and mobile menu toggle */}
-        <div className="flex items-center gap-5">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-5">
           <Link
             href="/myplan#today"
             onClick={() => setMenuOpen(false)}
             aria-label={`Today's plan, ${planCount} workouts`}
-            className="flex items-center gap-2 text-white transition-colors hover:text-[#CCFF00]"
+            className="flex items-center gap-1.5 text-white transition-colors hover:text-[#CCFF00] sm:gap-2"
           >
             <span className="text-sm font-semibold text-white">Plan</span>
             <span
@@ -90,14 +90,14 @@ const Navbar = () => {
             href="/myplan#saved"
             onClick={() => setMenuOpen(false)}
             aria-label={`Saved workouts, ${savedCount} workouts`}
-            className="flex items-center gap-1.5 text-white transition-colors hover:text-[#CCFF00]"
+            className="flex items-center gap-1 text-white transition-colors hover:text-[#CCFF00] sm:gap-1.5"
           >
             <span className="text-sm font-semibold text-white">Saved</span>
             <span className="text-sm text-[#9CA3AF]">{savedCount}</span>
           </Link>
 
           <button
-            className="flex items-center justify-center sm:hidden"
+            className="flex h-10 w-10 shrink-0 items-center justify-center sm:hidden"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label="Toggle menu"
           >
