@@ -8,7 +8,11 @@ import { Exercise } from "@/type/workoutType";
 
 // Fetch data for the workout library.
 const getWorkout = async (): Promise<Exercise[]> => {
-  const apiBaseUrl = process.env.NEXT_PUBLIC_ANALYTICS_ID || "https://api.api-store.workers.dev";
+  const configuredApiBaseUrl = process.env.NEXT_PUBLIC_ANALYTICS_ID?.trim();
+  const apiBaseUrl =
+    configuredApiBaseUrl && configuredApiBaseUrl !== "undefined"
+      ? configuredApiBaseUrl
+      : "https://api.api-store.workers.dev";
   const res = await fetch(`${apiBaseUrl}/api/fitlog`);
 
   if (!res.ok) {
