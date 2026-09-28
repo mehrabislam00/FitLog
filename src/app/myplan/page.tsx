@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useContext, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { LuClock, LuFlame, LuStar, LuCheck, LuX, LuChevronDown } from "react-icons/lu";
@@ -23,6 +23,16 @@ const MyPlan = () => {
     useContext(WorkoutContext);
   const [tab, setTab] = useState<Tab>("today");
   const [sortBy, setSortBy] = useState<SortKey>("duration");
+
+  useEffect(() => {
+    const syncTabFromHash = () => {
+      setTab(window.location.hash === "#saved" ? "saved" : "today");
+    };
+
+    syncTabFromHash();
+    window.addEventListener("hashchange", syncTabFromHash);
+    return () => window.removeEventListener("hashchange", syncTabFromHash);
+  }, []);
 
   const list: PlannedWorkout[] = tab === "today" ? PlanWorkout : SaveWorkout;
 

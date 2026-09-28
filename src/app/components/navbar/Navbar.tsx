@@ -2,17 +2,17 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { usePathname } from "next/navigation";
 import Logo from "@/app/assets/logo.png";
+import { WorkoutContext } from "@/context/workoutContext";
 
 const Navbar = () => {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  // Replace with real state/context
-  const planCount = 0;
-  const savedCount = 0;
+  const { PlanWorkout, SaveWorkout } = useContext(WorkoutContext);
+  const planCount = PlanWorkout.length;
+  const savedCount = SaveWorkout.length;
 
   const navLinks = [
     { href: "/", label: "Workouts" },
@@ -21,10 +21,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className="sticky top-0 z-50 border-b border-white/[0.05]"
+      className="sticky top-0 z-50 border-b border-white/5"
       style={{ backgroundColor: "#0C0D10" }}
     >
-      <div className="  flex h-[60px]  items-center justify-between px-5 container mx-auto">
+      <div className="  flex h-15  items-center justify-between px-5 container mx-auto">
 
         {/* ── Logo ── */}
         <Link href="/" className="flex items-center gap-2.5" onClick={() => setMenuOpen(false)} scroll={false}>
@@ -56,7 +56,7 @@ const Navbar = () => {
                 href={href}
                 onClick={() => setMenuOpen(false)}
                 scroll={false}
-                className={`rounded-full px-5 py-[7px] text-sm font-semibold transition-all duration-200 ${
+                className={`rounded-full px-5 py-1.75 text-sm font-semibold transition-all duration-200 ${
                   isActive
                     ? "text-[#CCFF00]"
                     : "text-[#9CA3AF] hover:text-white"
@@ -72,21 +72,31 @@ const Navbar = () => {
         {/* ── Right Side ── */}
         <div className="flex items-center gap-5">
           {/* Plan badge */}
-          <div className="flex items-center gap-2">
+          <Link
+            href="/myplan#today"
+            onClick={() => setMenuOpen(false)}
+            aria-label={`Today's plan, ${planCount} workouts`}
+            className="flex items-center gap-2 text-white transition-colors hover:text-[#CCFF00]"
+          >
             <span className="text-sm font-semibold text-white">Plan</span>
             <span
-              className="flex h-[22px] w-[22px] items-center justify-center rounded-full text-[11px] font-black"
+              className="flex h-5.5 w-5.5 items-center justify-center rounded-full text-[11px] font-black"
               style={{ backgroundColor: "#CCFF00", color: "#0C0D10" }}
             >
               {planCount}
             </span>
-          </div>
+          </Link>
 
           {/* Saved */}
-          <div className="flex items-center gap-1.5">
+          <Link
+            href="/myplan#saved"
+            onClick={() => setMenuOpen(false)}
+            aria-label={`Saved workouts, ${savedCount} workouts`}
+            className="flex items-center gap-1.5 text-white transition-colors hover:text-[#CCFF00]"
+          >
             <span className="text-sm font-semibold text-white">Saved</span>
             <span className="text-sm text-[#9CA3AF]">{savedCount}</span>
-          </div>
+          </Link>
 
           {/* Mobile hamburger */}
           <button
@@ -113,7 +123,7 @@ const Navbar = () => {
       {/* ── Mobile Dropdown ── */}
       {menuOpen && (
         <div
-          className="border-t border-white/[0.05] px-5 py-3 sm:hidden"
+          className="border-t border-white/5 px-5 py-3 sm:hidden"
           style={{ backgroundColor: "#0C0D10" }}
         >
           {navLinks.map(({ href, label }) => {
