@@ -21,7 +21,7 @@ const Hero = () => {
         className="relative container mx-auto overflow-hidden rounded-2xl"
         style={{ backgroundColor: "#111214" }}
       >
-        <div className="flex min-h-[300px] flex-col items-center gap-6 px-5 py-9 sm:flex-row sm:justify-between sm:gap-4 sm:px-8 sm:py-12 lg:min-h-[340px] lg:px-16">
+        <div className="flex min-h-75 flex-col items-center gap-6 px-5 py-9 sm:flex-row sm:justify-between sm:gap-4 sm:px-8 sm:py-12 lg:min-h-85 lg:px-16">
 
           {/* Hero copy and workout link */}
           <div className="z-10 w-full max-w-lg flex-1">
@@ -58,13 +58,13 @@ const Hero = () => {
           </div>
 
           {/* Featured workout image */}
-          <div className="relative flex w-full flex-shrink-0 items-end justify-center sm:w-auto sm:self-end">
-            <div className="relative aspect-[7/6] w-full max-w-[300px] sm:max-w-[340px] lg:max-w-[420px]">
+          <div className="relative flex w-full shrink-0 items-end justify-center sm:w-64 sm:self-end md:w-80 lg:w-105">
+            <div className="relative aspect-7/6 w-full max-w-75 sm:max-w-none">
               <Image
                 src={heroImage}
                 alt="FitLog workout"
                 fill
-                sizes="(max-width: 639px) 300px, (max-width: 1023px) 340px, 420px"
+                sizes="(max-width: 639px) 300px, (max-width: 767px) 256px, (max-width: 1023px) 320px, 420px"
                 priority
                 className="object-contain drop-shadow-2xl"
               />
