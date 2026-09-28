@@ -6,6 +6,7 @@ import { Exercise } from "@/type/workoutType";
 
 
 
+// Fetch data for the workout library.
 const getWorkout = async (): Promise<Exercise[]> => {
   const res = await fetch("https://api.api-store.workers.dev/api/fitlog");
 
@@ -17,7 +18,7 @@ const getWorkout = async (): Promise<Exercise[]> => {
 };
 
 
-// ── Page ───────────────────────────────────────────────────
+// Render the workout library page.
 const WorkOut = async () => {
   
   const workoutData = await getWorkout ();
@@ -30,7 +31,7 @@ const WorkOut = async () => {
     >
       <div className="container mx-auto ">
 
-        {/* ── Header ── */}
+        {/* Library heading */}
         <div className="mb-8">
           <h1 className="text-2xl font-black uppercase tracking-tight text-white">
             The Library
@@ -40,7 +41,7 @@ const WorkOut = async () => {
           </p>
         </div>
 
-        {/* ── Grid ── */}
+        {/* Workout card grid */}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {workoutData.map((workout) => 
             {

@@ -11,6 +11,7 @@ const Save = ({ workout }: { workout: Exercise }) => {
   const { SaveWorkout, setSaveWorkout } = useContext(WorkoutContext);
   const isSaved = SaveWorkout.some((item) => item.id === workout.id);
 
+  // Save once, then open the saved-workouts tab.
   const handleSave = () => {
     if (!isSaved) {
       setSaveWorkout((current) =>
@@ -25,7 +26,7 @@ const Save = ({ workout }: { workout: Exercise }) => {
 
   return (
     <>
-                  {/* Save for later */}
+      {/* Save action */}
                   <button
                     className="flex items-center gap-2 rounded-xl border px-5 py-3
                                text-sm font-semibold text-white

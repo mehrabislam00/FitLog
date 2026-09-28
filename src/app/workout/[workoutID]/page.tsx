@@ -19,6 +19,7 @@ interface WorkOutIdProps {
   params: Promise<{ workoutID: string }>;
 }
 
+// Fetch workout data for the detail page.
 const getWorkout = async (): Promise<Exercise[]> => {
   const res = await fetch("https://api.api-store.workers.dev/api/fitlog", {
     cache: "no-store",
@@ -27,7 +28,7 @@ const getWorkout = async (): Promise<Exercise[]> => {
   return res.json();
 };
 
-// ── Info row data ──────────────────────────────────────────
+// Build the rows shown in the workout overview.
 const infoRows = (w: Exercise) => [
   { icon: <LuDumbbell  size={14} />, label: "Equipment", value: w.equipment             },
   { icon: <LuZap       size={14} />, label: "Difficulty", value: w.difficulty            },
@@ -38,7 +39,6 @@ const infoRows = (w: Exercise) => [
   { icon: <LuStar      size={14} />, label: "Rating",     value: String(w.rating)        },
 ];
 
-// ── Page ───────────────────────────────────────────────────
 const WorkOutDetails = async ({ params }: WorkOutIdProps) => {
   const { workoutID } = await params;
   const workoutData   = await getWorkout();
@@ -46,6 +46,7 @@ const WorkOutDetails = async ({ params }: WorkOutIdProps) => {
     (w: Exercise) => String(w.id) === workoutID
   );
 
+  // Show a fallback when the requested workout is unavailable.
   if (!workout) {
     return (
       <main
@@ -72,6 +73,7 @@ const WorkOutDetails = async ({ params }: WorkOutIdProps) => {
     );
   }
 
+  // Main workout detail page body.
   return (
     <main
       className="min-h-screen px-5 py-12 sm:px-8"
@@ -80,7 +82,7 @@ const WorkOutDetails = async ({ params }: WorkOutIdProps) => {
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.1fr]">
 
-          {/* ── Left: Image ── */}
+          {/* Workout image */}
           <div className="relative w-full overflow-hidden rounded-2xl"
                style={{ minHeight: "480px" }}>
             <Image
@@ -92,20 +94,17 @@ const WorkOutDetails = async ({ params }: WorkOutIdProps) => {
             />
           </div>
 
-          {/* ── Right: Details ── */}
+          {/* Workout description and training details */}
           <div className="flex flex-col">
 
-            {/* Title */}
             <h1 className="text-4xl font-black uppercase leading-tight tracking-tight text-white sm:text-[2.6rem]">
               {workout.name}
             </h1>
 
-            {/* Description */}
             <p className="mt-3 text-sm leading-relaxed" style={{ color: "#9CA3AF" }}>
               {workout.description}
             </p>
 
-            {/* Muscle group tags */}
             <div className="mt-4 flex flex-wrap gap-2">
               {workout.muscleGroups.map((mg) => (
                 <span
@@ -118,7 +117,7 @@ const WorkOutDetails = async ({ params }: WorkOutIdProps) => {
               ))}
             </div>
 
-            {/* ── Info table ── */}
+            {/* Workout overview */}
             <div
               className="mt-6 overflow-hidden rounded-xl border border-white/6"
               style={{ backgroundColor: "#111214" }}
@@ -144,7 +143,7 @@ const WorkOutDetails = async ({ params }: WorkOutIdProps) => {
               ))}
             </div>
 
-            {/* ── Instructions ── */}
+            {/* Exercise instructions */}
             <div className="mt-7">
               <h2
                 className="mb-4 text-[11px] font-black uppercase tracking-[0.2em]"
@@ -167,12 +166,10 @@ const WorkOutDetails = async ({ params }: WorkOutIdProps) => {
               </ol>
             </div>
 
-            {/* ── Action buttons ── */}
+            {/* Plan and save actions */}
             <div className="mt-8 flex flex-wrap gap-3">
-              {/* Add to today's plan */}
              <TodayPlan workout = {workout} />
 
-              {/* Save for later */}
           <Save workout={workout} />
             </div>
 

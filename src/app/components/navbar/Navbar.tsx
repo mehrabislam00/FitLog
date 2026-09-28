@@ -26,7 +26,7 @@ const Navbar = () => {
     >
       <div className="  flex h-15  items-center justify-between px-5 container mx-auto">
 
-        {/* ── Logo ── */}
+        {/* Brand link */}
         <Link href="/" className="flex items-center gap-2.5" onClick={() => setMenuOpen(false)} scroll={false}>
           <Image
             src={Logo}
@@ -43,7 +43,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* ── Center Nav (desktop) ── */}
+        {/* Desktop navigation */}
         <div
           className="hidden items-center gap-0.5 rounded-full p-1 sm:flex"
           style={{ backgroundColor: "#14161a" }}
@@ -69,9 +69,8 @@ const Navbar = () => {
           })}
         </div>
 
-        {/* ── Right Side ── */}
+        {/* Plan links and mobile menu toggle */}
         <div className="flex items-center gap-5">
-          {/* Plan badge */}
           <Link
             href="/myplan#today"
             onClick={() => setMenuOpen(false)}
@@ -87,7 +86,6 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* Saved */}
           <Link
             href="/myplan#saved"
             onClick={() => setMenuOpen(false)}
@@ -98,7 +96,6 @@ const Navbar = () => {
             <span className="text-sm text-[#9CA3AF]">{savedCount}</span>
           </Link>
 
-          {/* Mobile hamburger */}
           <button
             className="flex items-center justify-center sm:hidden"
             onClick={() => setMenuOpen((v) => !v)}
@@ -120,7 +117,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* ── Mobile Dropdown ── */}
+      {/* Mobile navigation menu */}
       {menuOpen && (
         <div
           className="border-t border-white/5 px-5 py-3 sm:hidden"

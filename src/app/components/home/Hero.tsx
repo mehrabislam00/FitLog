@@ -17,17 +17,15 @@ const Hero = () => {
       className="px-4 py-4 sm:px-6 sm:py-5"
       style={{ backgroundColor: "#0C0D10" }}
     >
-      {/* Card wrapper */}
       <div
         className="relative container mx-auto  overflow-hidden rounded-2xl"
         style={{ backgroundColor: "#111214" }}
       >
         <div className="flex min-h-[300px] flex-col items-center gap-8 px-10 py-14 sm:flex-row sm:justify-between sm:gap-0 lg:min-h-[340px] lg:px-16">
 
-          {/* ── Left Content ── */}
+          {/* Hero copy and workout link */}
           <div className="z-10 w-full max-w-lg flex-1">
 
-            {/* Label */}
             <p
               className="mb-5 text-[10px] font-black uppercase tracking-[0.22em]"
               style={{ color: "#CCFF00" }}
@@ -35,14 +33,12 @@ const Hero = () => {
               Workout Library
             </p>
 
-            {/* Heading */}
             <h1 className="mb-4 text-4xl font-black uppercase leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-[3.6rem]">
               Train with Intent.{" "}
               <br className="hidden sm:block" />
               Log Every Set.
             </h1>
 
-            {/* Description */}
             <p
               className="mb-8 max-w-md text-sm leading-relaxed"
               style={{ color: "#9CA3AF" }}
@@ -51,7 +47,6 @@ const Hero = () => {
               lock it into today&apos;s plan, and watch the week&apos;s work add up.
             </p>
 
-            {/* CTA Button — smooth scroll to library */}
             <button
               type="button"
               onClick={scrollToLibraries}
@@ -62,7 +57,7 @@ const Hero = () => {
             </button>
           </div>
 
-          {/* ── Right Image ── */}
+          {/* Featured workout image */}
           <div className="relative flex w-full flex-shrink-0 items-end justify-center sm:w-auto sm:self-end">
             <Image
               src={heroImage}

@@ -15,6 +15,7 @@ const TodayPlan = ({ workout }: { workout: Exercise }) => {
   const isAdded = PlanWorkout.some((item) => item.id === workout.id);
   const isAtCapacity = PlanWorkout.length >= 5;
 
+  // Add the workout only when it fits today's plan.
   const handleTodayPlan = () => {
     if (isAdded || isAtCapacity) return;
     setPlanWorkout((current) => [...current, { ...workout, done: false }]);
@@ -28,7 +29,7 @@ const TodayPlan = ({ workout }: { workout: Exercise }) => {
 
   return (
     <>
-     {/* Add to today's plan */}
+     {/* Today's plan action */}
                   <button
                    
                     className="flex items-center gap-2 rounded-xl px-5 py-3

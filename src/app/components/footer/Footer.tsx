@@ -10,7 +10,7 @@ const Footer = () => {
     >
       <div className="container mx-auto flex  items-center justify-between px-5 py-6">
 
-        {/* ── Logo ── */}
+        {/* Brand */}
         <div className="flex items-center gap-2.5">
           <Image
             src={Logo}
@@ -25,7 +25,7 @@ const Footer = () => {
           </span>
         </div>
 
-        {/* ── Copyright ── */}
+        {/* Copyright */}
         <p className="text-xs text-[#9CA3AF]">
           © 2026 FitLog — Workout Library. Train hard, log honest.
         </p>
