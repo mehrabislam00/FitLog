@@ -21,7 +21,8 @@ interface WorkOutIdProps {
 
 // Fetch workout data for the detail page.
 const getWorkout = async (): Promise<Exercise[]> => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_ANALYTICS_ID}/api/fitlog`, {
+  const apiBaseUrl = process.env.NEXT_PUBLIC_ANALYTICS_ID || "https://api.api-store.workers.dev";
+  const res = await fetch(`${apiBaseUrl}/api/fitlog`, {
     cache: "no-store",
   });
   if (!res.ok) throw new Error("Failed to fetch Exercise");
