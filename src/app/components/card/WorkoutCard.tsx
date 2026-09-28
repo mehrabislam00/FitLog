@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { LuClock, LuFlame, LuStar, LuArrowRight } from "react-icons/lu";
 import type { Exercise } from "@/type/workoutType";
 
@@ -44,7 +45,8 @@ const WorkoutCard = ({workout }: WorkoutCardProps) => {
         >
           {/* CTA button */}
           <div className="translate-y-4 transition-transform duration-350 ease-out group-hover:translate-y-0">
-            <button
+            <Link
+              href={`/workout/${workout.id}`}
               className="flex items-center gap-2 rounded-full px-5 py-2.5
                          text-[11px] font-black uppercase tracking-widest
                          shadow-[0_0_28px_rgba(204,255,0,0.45)]
@@ -52,7 +54,7 @@ const WorkoutCard = ({workout }: WorkoutCardProps) => {
               style={{ backgroundColor: "#CCFF00", color: "#0C0D10" }}
             >
               View Workout <LuArrowRight size={13} strokeWidth={2.5} />
-            </button>
+            </Link>
           </div>
 
           {/* Stats chip */}
