@@ -83,7 +83,7 @@ function Controls({ tab, setTab, sortBy, setSortBy }: {
               <option key={o.value} value={o.value}>{o.label}</option>
             ))}
           </select>
-          <LuChevronDown size={13} className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-[#9CA3AF]" />
+          <LuChevronDown size={13} className=" pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-[#9CA3AF]" />
         </div>
       </div>
     </div>

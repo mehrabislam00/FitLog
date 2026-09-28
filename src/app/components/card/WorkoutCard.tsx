@@ -2,12 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { LuClock, LuFlame, LuStar, LuArrowRight } from "react-icons/lu";
+import { LuClock, LuFlame, LuStar, LuChevronRight } from "react-icons/lu";
 import type { Exercise } from "@/type/workoutType";
 
-type WorkoutCardProps = {
-  workout: Exercise;
-};
+type WorkoutCardProps = { workout: Exercise };
 
 const WorkoutCard = ({ workout }: WorkoutCardProps) => {
   return (
@@ -20,26 +18,24 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
                  hover:shadow-[0_24px_50px_rgba(0,0,0,0.45),0_0_0_1px_rgba(204,255,0,0.07)]"
       style={{ backgroundColor: "#111214" }}
     >
-      {/* Workout image and hover actions */}
+      {/* ── Image ── */}
       <div className="relative h-52.5 w-full overflow-hidden">
         <Image
           src={workout.image}
           alt={workout.name}
           fill
           priority
-          className="object-cover
-                     transition-all duration-500 ease-in-out
-                     group-hover:scale-[1.08]
-                     group-hover:blur-md
-                     group-hover:brightness-100"
+          className="object-cover transition-all duration-500 ease-in-out
+                     group-hover:scale-[1.08] group-hover:blur-md"
         />
 
-        {/* Centered workout link and metadata */}
+        {/* Hover content */}
         <div
           className="absolute inset-0 flex flex-col items-center justify-center gap-3
                      opacity-0 transition-opacity duration-300 delay-75
                      group-hover:opacity-100"
         >
+          {/* CTA button — LuChevronRight replaces broken LuArrowRight */}
           <div className="translate-y-4 transition-transform duration-300 ease-out group-hover:translate-y-0">
             <Link
               href={`/workout/${workout.id}`}
@@ -49,17 +45,19 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
                          transition-transform duration-150 active:scale-95"
               style={{ backgroundColor: "#CCFF00", color: "#0C0D10" }}
             >
-              View Workout <LuArrowRight size={13} strokeWidth={2.5} />
+              View Workout
+              <LuChevronRight className="" size={14} strokeWidth={2.5} />
             </Link>
           </div>
 
+          {/* Stats chip */}
           <div
             className="translate-y-4 transition-transform duration-300 ease-out delay-75
                        group-hover:translate-y-0
                        flex items-center gap-2 rounded-full px-4 py-1.5
                        text-[10px] font-semibold border backdrop-blur-sm"
             style={{
-              backgroundColor: "rgba(0,0,0,0.15)",
+              backgroundColor: "rgba(0,0,0,0.35)",
               borderColor: "rgba(255,255,255,0.18)",
               color: "rgba(255,255,255,0.9)",
             }}
@@ -79,7 +77,7 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
         </div>
       </div>
 
-      {/* Workout details */}
+      {/* ── Body ── */}
       <div className="px-5 pb-5 pt-4">
         <div className="mb-3.5 flex flex-wrap gap-2">
           {workout.muscleGroups.map((tag) => (
@@ -113,7 +111,7 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
 
         <div className="flex items-center gap-5">
           {[
-            { icon: <LuClock size={13} />, label: `${workout.duration} min`       },
+            { icon: <LuClock size={13} />, label: `${workout.duration} min`        },
             { icon: <LuFlame size={13} />, label: `${workout.caloriesBurned} kcal` },
             { icon: <LuStar  size={13} />, label: `${workout.rating}`              },
           ].map(({ icon, label }) => (
@@ -127,7 +125,6 @@ const WorkoutCard = ({ workout }: WorkoutCardProps) => {
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );
