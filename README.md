@@ -156,7 +156,7 @@ CSE Student & Web Developer
 
 ## 📄 License
 
-This project is currently intended for educational and portfolio purposes.
+This project is currently intended for educational purposes.
 
 ---
 
