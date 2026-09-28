@@ -1,36 +1,30 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { LuClock, LuFlame, LuStar, LuArrowRight } from "react-icons/lu";
+import type { Exercise } from "@/type/workoutType";
 
 type WorkoutCardProps = {
-  image: string;
-  tags: string[];
-  title: string;
-  equipment: string;
-  duration: number;
-  calories: number;
-  rating: number;
+ workout : Exercise
 };
 
-const WorkoutCard = ({ image, tags, title, equipment, duration, calories, rating }: WorkoutCardProps) => {
+const WorkoutCard = ({workout }: WorkoutCardProps) => {
   return (
     <div
       className="group relative w-full cursor-pointer overflow-hidden rounded-[22px]
-                 border border-white/[0.06]
+                 border border-white/6
                  transition-all duration-500 ease-out
-                 hover:-translate-y-[6px]
+                 hover:-translate-y-1.5
                  hover:border-[#CCFF00]/20
                  hover:shadow-[0_24px_50px_rgba(0,0,0,0.45),0_0_0_1px_rgba(204,255,0,0.07)]"
       style={{ backgroundColor: "#111214" }}
     >
       {/* ── Image ── */}
-      <div className="relative h-[210px] w-full overflow-hidden">
+      <div className="relative h-52.5 w-full overflow-hidden">
 
         <Image
-          src={image}
-          alt={title}
+          src={workout.image}
+          alt={workout.name}
           fill
           priority
           className="object-cover transition-all duration-600 ease-out
@@ -65,7 +59,7 @@ const WorkoutCard = ({ image, tags, title, equipment, duration, calories, rating
           <div
             className="translate-y-4 transition-transform duration-350 ease-out delay-75
                        group-hover:translate-y-0
-                       flex items-center gap-2 rounded-full px-4 py-[7px]
+                       flex items-center gap-2 rounded-full px-4 py-1.75
                        text-[10px] font-semibold border"
             style={{
               backgroundColor: "rgba(0,0,0,0.45)",
@@ -74,15 +68,15 @@ const WorkoutCard = ({ image, tags, title, equipment, duration, calories, rating
             }}
           >
             <span className="flex items-center gap-1 opacity-80">
-              <LuClock size={12} /> {duration} min
+              <LuClock size={12} /> {workout.duration} min
             </span>
             <span className="opacity-30">·</span>
             <span className="flex items-center gap-1 opacity-80">
-              <LuFlame size={12} /> {calories} kcal
+              <LuFlame size={12} /> {workout.caloriesBurned} kcal
             </span>
             <span className="opacity-30">·</span>
             <span className="flex items-center gap-1 font-bold" style={{ color: "#CCFF00" }}>
-              <LuStar size={12} /> {rating}
+              <LuStar size={12} /> {workout.rating}
             </span>
           </div>
         </div>
@@ -93,10 +87,10 @@ const WorkoutCard = ({ image, tags, title, equipment, duration, calories, rating
 
         {/* Tags */}
         <div className="mb-3.5 flex flex-wrap gap-2">
-          {tags.map((tag) => (
+          {workout.muscleGroups.map((tag) => (
             <span
               key={tag}
-              className="rounded-full px-3 py-[3px] text-[10px] font-black uppercase tracking-wider
+              className="rounded-full px-3 py-0.75 text-[10px] font-black uppercase tracking-wider
                          transition-shadow duration-300
                          group-hover:shadow-[0_0_12px_rgba(204,255,0,0.3)]"
               style={{ backgroundColor: "#CCFF00", color: "#0C0D10" }}
@@ -111,12 +105,12 @@ const WorkoutCard = ({ image, tags, title, equipment, duration, calories, rating
           className="mb-1 text-[1.05rem] font-black uppercase leading-tight tracking-tight text-white
                      transition-colors duration-300 group-hover:text-[#CCFF00]"
         >
-          {title}
+          {workout.name}
         </h2>
 
         {/* Equipment */}
         <p className="mb-4 text-xs" style={{ color: "#9CA3AF" }}>
-          {equipment}
+          {workout.equipment}
         </p>
 
         {/* Divider */}
@@ -128,9 +122,9 @@ const WorkoutCard = ({ image, tags, title, equipment, duration, calories, rating
         {/* Stats */}
         <div className="flex items-center gap-5">
           {[
-            { icon: <LuClock size={13} />,  label: `${duration} min`  },
-            { icon: <LuFlame size={13} />,  label: `${calories} kcal` },
-            { icon: <LuStar  size={13} />,  label: `${rating}`        },
+            { icon: <LuClock size={13} />,  label: `${workout.duration} min`  },
+            { icon: <LuFlame size={13} />,  label: `${workout.caloriesBurned} kcal` },
+            { icon: <LuStar  size={13} />,  label: `${workout.rating}`        },
           ].map(({ icon, label }) => (
             <div
               key={label}
